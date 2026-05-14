@@ -1,7 +1,7 @@
 ﻿function SelectFilter({ label, options, value, onChange }) {
   return (
-    <div className="space-y-2">
-      {label && <label className="text-sm font-medium text-slate-700 dark:text-slate-200">{label}</label>}
+    <div className="w-full space-y-1 sm:w-auto sm:space-y-2">
+      {label && <label className="block text-xs font-medium text-slate-700 dark:text-slate-200 sm:text-sm">{label}</label>}
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}

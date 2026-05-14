@@ -47,56 +47,58 @@ function App() {
   const isAuthenticated = Boolean(user);
 
   return (
-    <Router>
-      <Toaster position="top-right" />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            isAuthenticated ? (
-              <Navigate to="/dashboard" replace />
-            ) : (
-              <LoginPage onLogin={handleLogin} />
-            )
-          }
-        />
-        <Route
-          path="/dashboard"
-          element={
-            isAuthenticated ? (
-              <DashboardHome
-                theme={theme}
-                toggleTheme={toggleTheme}
-                sidebarCollapsed={sidebarCollapsed}
-                onToggleSidebar={() => setSidebarCollapsed((prev) => !prev)}
-                onLogout={handleLogout}
-                userName={user?.name || 'Admin'}
-              />
-            ) : (
-              <Navigate to="/" replace />
-            )
-          }
-        />
-        <Route
-          path="/users"
-          element={
-            isAuthenticated ? (
-              <UsersPage
-                theme={theme}
-                toggleTheme={toggleTheme}
-                sidebarCollapsed={sidebarCollapsed}
-                onToggleSidebar={() => setSidebarCollapsed((prev) => !prev)}
-                onLogout={handleLogout}
-                userName={user?.name || 'Admin'}
-              />
-            ) : (
-              <Navigate to="/" replace />
-            )
-          }
-        />
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
-    </Router>
+    <div className="min-h-screen bg-slate-100 text-slate-900 transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100">
+      <Router>
+        <Toaster position="top-right" />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              isAuthenticated ? (
+                <Navigate to="/dashboard" replace />
+              ) : (
+                <LoginPage onLogin={handleLogin} />
+              )
+            }
+          />
+          <Route
+            path="/dashboard"
+            element={
+              isAuthenticated ? (
+                <DashboardHome
+                  theme={theme}
+                  toggleTheme={toggleTheme}
+                  sidebarCollapsed={sidebarCollapsed}
+                  onToggleSidebar={() => setSidebarCollapsed((prev) => !prev)}
+                  onLogout={handleLogout}
+                  userName={user?.name || 'Admin'}
+                />
+              ) : (
+                <Navigate to="/" replace />
+              )
+            }
+          />
+          <Route
+            path="/users"
+            element={
+              isAuthenticated ? (
+                <UsersPage
+                  theme={theme}
+                  toggleTheme={toggleTheme}
+                  sidebarCollapsed={sidebarCollapsed}
+                  onToggleSidebar={() => setSidebarCollapsed((prev) => !prev)}
+                  onLogout={handleLogout}
+                  userName={user?.name || 'Admin'}
+                />
+              ) : (
+                <Navigate to="/" replace />
+              )
+            }
+          />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </Router>
+    </div>
   );
 }
 

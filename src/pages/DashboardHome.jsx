@@ -42,71 +42,71 @@ function DashboardHome({ theme, toggleTheme, sidebarCollapsed, onToggleSidebar, 
   ];
 
   return (
-    <div className="min-h-screen bg-slate-100 text-slate-900 transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100">
+    <div className="min-h-screen bg-slate-100 text-slate-900 transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100 lg:flex lg:items-stretch">
       <Sidebar collapsed={sidebarCollapsed} onToggleCollapse={onToggleSidebar} onLogout={onLogout} />
-      <main className={`desktop-padding pt-6 lg:pt-8 ${sidebarCollapsed ? 'lg:pl-24' : 'lg:pl-72'}`}>
-        <div className="px-4 pb-10 lg:px-10">
+      <main className="flex-1 pt-4 sm:pt-6 lg:pt-8 px-4 sm:px-6 lg:px-8">
+        <div className="pb-8">
           <Header theme={theme} onToggleTheme={toggleTheme} onLogout={onLogout} userName={userName} />
 
-          <div className="grid gap-6 xl:grid-cols-[1.5fr_1fr]">
+          <div className="grid gap-4 sm:gap-6 lg:grid-cols-[1.7fr_1.3fr] xl:grid-cols-[1.6fr_1.4fr]">
             <div className="card overflow-hidden">
-              <div className="flex flex-col gap-6 bg-slate-950 p-8 text-white sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex flex-col gap-4 bg-slate-950 p-5 text-white sm:gap-6 sm:p-8 md:flex-row md:items-center md:justify-between">
                 <div>
-                  <p className="text-sm uppercase tracking-[0.18em] text-slate-400">Performance overview</p>
-                  <h2 className="mt-4 text-3xl font-semibold">Sales snapshot</h2>
-                  <p className="mt-3 max-w-xl text-slate-300">
+                  <p className="text-xs uppercase tracking-[0.18em] text-slate-400 sm:text-sm">Performance overview</p>
+                  <h2 className="mt-2 text-2xl font-semibold sm:mt-4 sm:text-3xl">Sales snapshot</h2>
+                  <p className="mt-2 max-w-xl text-xs text-slate-300 sm:mt-3 sm:text-sm">
                     Monitor orders, revenue, and pending tasks from a modern admin experience built for teams.
                   </p>
                 </div>
-                <div className="rounded-3xl border border-white/10 bg-white/10 p-4 text-center backdrop-blur">
-                  <p className="text-sm text-slate-300">Live traffic</p>
-                  <p className="mt-2 text-2xl font-semibold">72.1%</p>
+                <div className="flex-shrink-0 rounded-3xl border border-white/10 bg-white/10 p-3 text-center backdrop-blur sm:p-4">
+                  <p className="text-xs text-slate-300 sm:text-sm">Live traffic</p>
+                  <p className="mt-1 text-xl font-semibold sm:mt-2 sm:text-2xl">72.1%</p>
                 </div>
               </div>
-              <img src={BannerImage} alt="Dashboard banner" className="w-full object-cover" loading="lazy" />
+              <img src={BannerImage} alt="Dashboard banner" className="w-full max-w-full object-cover" loading="lazy" />
             </div>
 
-            <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-1">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-2">
               {stats.map((stat) => (
                 <StatCard key={stat.title} title={stat.title} value={stat.value} details={stat.details} icon={stat.icon} trend={stat.trend} />
               ))}
             </div>
           </div>
 
-          <section className="mt-8 grid gap-6 xl:grid-cols-[1.4fr_0.6fr]">
-            <div className="space-y-6">
-              <div className="card p-6">
-                <div className="mb-6 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+          <section className="mt-6 grid gap-4 sm:mt-8 sm:gap-6 xl:grid-cols-[1.4fr_0.6fr]">
+            <div className="space-y-4 sm:space-y-6">
+              <div className="card p-4 sm:p-6">
+                <div className="mb-4 flex flex-col gap-2 sm:mb-6 md:flex-row md:items-center md:justify-between">
                   <div>
-                    <h3 className="text-xl font-semibold text-slate-950 dark:text-slate-100">Revenue & growth</h3>
-                    <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">
+                    <h3 className="text-lg font-semibold text-slate-950 dark:text-slate-100 sm:text-xl">Revenue & growth</h3>
+                    <p className="mt-1 text-xs text-slate-500 dark:text-slate-400 sm:mt-2 sm:text-sm">
                       Revenue and user growth charts help you understand the business momentum.
                     </p>
                   </div>
                 </div>
-                <div className="grid gap-6 lg:grid-cols-2">
-                  <div className="rounded-[2rem] border border-slate-200/80 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-900">
-                    <h4 className="text-sm font-semibold text-slate-900 dark:text-slate-100">Revenue trend</h4>
-                    <div className="mt-4 h-72">
+                <div className="grid gap-4 sm:gap-6 lg:grid-cols-2">
+                  <div className="rounded-[2rem] border border-slate-200/80 bg-slate-50 p-3 dark:border-slate-800 dark:bg-slate-900 sm:p-4">
+                    <h4 className="text-xs font-semibold text-slate-900 dark:text-slate-100 sm:text-sm">Revenue trend</h4>
+                    <div className="mt-3 h-56 sm:mt-4 sm:h-72">
                       <ResponsiveContainer width="100%" height="100%">
-                        <LineChart data={revenueHistory} margin={{ top: 10, right: 10, left: -10, bottom: 0 }}>
+                        <LineChart data={revenueHistory} margin={{ top: 5, right: 5, left: -10, bottom: 0 }}>
                           <CartesianGrid strokeDasharray="3 3" stroke="#cbd5e1" opacity={0.25} />
-                          <XAxis dataKey="month" tickLine={false} axisLine={false} tick={{ fill: '#64748b' }} />
-                          <YAxis tickLine={false} axisLine={false} tick={{ fill: '#64748b' }} />
+                          <XAxis dataKey="month" tickLine={false} axisLine={false} tick={{ fill: '#64748b', fontSize: 12 }} />
+                          <YAxis tickLine={false} axisLine={false} tick={{ fill: '#64748b', fontSize: 12 }} />
                           <Tooltip formatter={(value) => formatCurrency(value)} />
                           <Line type="monotone" dataKey="revenue" stroke="#0ea5e9" strokeWidth={3} dot={{ r: 4 }} />
                         </LineChart>
                       </ResponsiveContainer>
                     </div>
                   </div>
-                  <div className="rounded-[2rem] border border-slate-200/80 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-900">
-                    <h4 className="text-sm font-semibold text-slate-900 dark:text-slate-100">User growth</h4>
-                    <div className="mt-4 h-72">
+                  <div className="rounded-[2rem] border border-slate-200/80 bg-slate-50 p-3 dark:border-slate-800 dark:bg-slate-900 sm:p-4">
+                    <h4 className="text-xs font-semibold text-slate-900 dark:text-slate-100 sm:text-sm">User growth</h4>
+                    <div className="mt-3 h-56 sm:mt-4 sm:h-72">
                       <ResponsiveContainer width="100%" height="100%">
-                        <BarChart data={userGrowth} margin={{ top: 10, right: 10, left: -10, bottom: 0 }}>
+                        <BarChart data={userGrowth} margin={{ top: 5, right: 5, left: -10, bottom: 0 }}>
                           <CartesianGrid strokeDasharray="3 3" stroke="#cbd5e1" opacity={0.25} />
-                          <XAxis dataKey="month" tickLine={false} axisLine={false} tick={{ fill: '#64748b' }} />
-                          <YAxis tickLine={false} axisLine={false} tick={{ fill: '#64748b' }} />
+                          <XAxis dataKey="month" tickLine={false} axisLine={false} tick={{ fill: '#64748b', fontSize: 12 }} />
+                          <YAxis tickLine={false} axisLine={false} tick={{ fill: '#64748b', fontSize: 12 }} />
                           <Tooltip />
                           <Bar dataKey="users" fill="#0284c7" radius={[12, 12, 0, 0]} />
                         </BarChart>
@@ -116,9 +116,9 @@ function DashboardHome({ theme, toggleTheme, sidebarCollapsed, onToggleSidebar, 
                 </div>
               </div>
 
-              <div className="card p-6">
-                <h4 className="text-xl font-semibold text-slate-950 dark:text-slate-100">Orders distribution</h4>
-                <div className="mt-5 h-72">
+              <div className="card p-4 sm:p-6">
+                <h4 className="text-lg font-semibold text-slate-950 dark:text-slate-100 sm:text-xl">Orders distribution</h4>
+                <div className="mt-4 h-56 sm:mt-5 sm:h-72">
                   <ResponsiveContainer width="100%" height="100%">
                     <PieChart>
                       <Legend verticalAlign="bottom" height={36} />
@@ -134,20 +134,20 @@ function DashboardHome({ theme, toggleTheme, sidebarCollapsed, onToggleSidebar, 
               </div>
             </div>
 
-            <div className="space-y-6">
-              <div className="card p-6">
-                <div className="mb-4 flex items-center justify-between gap-4">
+            <div className="space-y-4 sm:space-y-6">
+              <div className="card p-4 sm:p-6">
+                <div className="mb-3 flex items-center justify-between gap-2 sm:mb-4 sm:gap-4">
                   <div>
-                    <h3 className="text-xl font-semibold text-slate-950 dark:text-slate-100">Recent activity</h3>
-                    <p className="text-sm text-slate-500 dark:text-slate-400">Latest updates from your team and orders.</p>
+                    <h3 className="text-lg font-semibold text-slate-950 dark:text-slate-100 sm:text-xl">Recent activity</h3>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 sm:text-sm">Latest updates from your team and orders.</p>
                   </div>
                 </div>
-                <div className="space-y-4">
+                <div className="space-y-3 sm:space-y-4">
                   {activityTimeline.map((item) => (
-                    <div key={item.id} className="rounded-3xl border border-slate-200/80 bg-slate-50 p-5 dark:border-slate-800 dark:bg-slate-900">
-                      <div className="flex items-center justify-between gap-4">
-                        <div>
-                          <p className="text-sm font-semibold text-slate-900 dark:text-slate-100">{item.title}</p>
+                    <div key={item.id} className="rounded-3xl border border-slate-200/80 bg-slate-50 p-3 dark:border-slate-800 dark:bg-slate-900 sm:p-5">
+                      <div className="flex items-start justify-between gap-2 sm:gap-4">
+                        <div className="min-w-0 flex-1">
+                          <p className="text-xs font-semibold text-slate-900 dark:text-slate-100 sm:text-sm">{item.title}</p>
                           <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">{item.description}</p>
                         </div>
                         <span className="text-xs text-slate-500 dark:text-slate-400">{item.time}</span>
@@ -157,17 +157,17 @@ function DashboardHome({ theme, toggleTheme, sidebarCollapsed, onToggleSidebar, 
                 </div>
               </div>
 
-              <div className="card p-6">
-                <h3 className="text-xl font-semibold text-slate-950 dark:text-slate-100">Quick summary</h3>
-                <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">A compact view of the most important business metrics.</p>
-                <div className="mt-6 space-y-4">
-                  <div className="rounded-3xl bg-slate-50 p-4 dark:bg-slate-900">
-                    <p className="text-sm text-slate-500 dark:text-slate-400">Average order value</p>
-                    <p className="mt-2 text-2xl font-semibold text-slate-900 dark:text-slate-100">{formatCurrency(dashboardStats.averageOrder)}</p>
+              <div className="card p-4 sm:p-6">
+                <h3 className="text-lg font-semibold text-slate-950 dark:text-slate-100 sm:text-xl">Quick summary</h3>
+                <p className="mt-2 text-xs text-slate-500 dark:text-slate-400 sm:mt-3 sm:text-sm">A compact view of the most important business metrics.</p>
+                <div className="mt-4 space-y-3 sm:mt-6 sm:space-y-4">
+                  <div className="rounded-3xl bg-slate-50 p-3 dark:bg-slate-900 sm:p-4">
+                    <p className="text-xs text-slate-500 dark:text-slate-400 sm:text-sm">Average order value</p>
+                    <p className="mt-1 text-xl font-semibold text-slate-900 dark:text-slate-100 sm:mt-2 sm:text-2xl">{formatCurrency(dashboardStats.averageOrder)}</p>
                   </div>
-                  <div className="rounded-3xl bg-slate-50 p-4 dark:bg-slate-900">
-                    <p className="text-sm text-slate-500 dark:text-slate-400">New users onboarded</p>
-                    <p className="mt-2 text-2xl font-semibold text-slate-900 dark:text-slate-100">{dashboardStats.newUsers}</p>
+                  <div className="rounded-3xl bg-slate-50 p-3 dark:bg-slate-900 sm:p-4">
+                    <p className="text-xs text-slate-500 dark:text-slate-400 sm:text-sm">New users onboarded</p>
+                    <p className="mt-1 text-xl font-semibold text-slate-900 dark:text-slate-100 sm:mt-2 sm:text-2xl">{dashboardStats.newUsers}</p>
                   </div>
                 </div>
               </div>

@@ -55,11 +55,11 @@
   }
 
   .form-input {
-    @apply w-full rounded-3xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-900 outline-none transition duration-200 ease-in-out focus:border-sky-500 focus:ring-2 focus:ring-sky-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:placeholder:text-slate-500 dark:focus:border-sky-400 dark:focus:ring-sky-900/30;
+    @apply w-full rounded-3xl border border-slate-300 bg-slate-50 px-3 py-2.5 text-xs outline-none transition duration-200 ease-in-out focus:border-sky-500 focus:ring-2 focus:ring-sky-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:placeholder:text-slate-500 dark:focus:border-sky-400 dark:focus:ring-sky-900/30 sm:px-4 sm:py-3 sm:text-sm;
   }
 
   .badge {
-    @apply inline-flex rounded-full px-3 py-1 text-xs font-semibold tracking-[0.18em];
+    @apply inline-flex rounded-full px-2.5 py-1 text-xs font-semibold tracking-[0.18em] sm:px-3;
   }
 
   .desktop-padding {
@@ -68,5 +68,18 @@
 
   .table-scroll {
     @apply overflow-x-auto;
+  }
+
+  @media (max-width: 640px) {
+    .table-scroll {
+      @apply -mx-3 px-3;
+    }
+  }
+
+  /* Mobile-first responsive spacing */
+  @media (max-width: 640px) {
+    .card {
+      @apply rounded-2xl;
+    }
   }
 }
