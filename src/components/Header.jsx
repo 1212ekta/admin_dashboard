@@ -16,6 +16,7 @@ function Header({
   onSearch,
   onLogout,
   userName = 'Admin',
+  showSearch = true,
 }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -43,7 +44,6 @@ function Header({
 
   return (
     <div className="mb-6 rounded-3xl bg-white px-4 py-4 shadow-sm shadow-slate-200 dark:bg-slate-900 dark:shadow-slate-950/40 sm:px-5 sm:py-5">
-
       <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
 
         {/* Left Section */}
@@ -54,7 +54,7 @@ function Header({
         </div>
 
         {/* Right Section */}
-        <div className="flex flex-col gap-3 lg:flex-1 lg:flex-row lg:items-center lg:justify-end">
+        <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-end">
 
           {/* Mobile Actions */}
           <div className="flex items-center justify-between gap-3 sm:hidden">
@@ -129,21 +129,23 @@ function Header({
             </div>
           </div>
 
-          {/* Search */}
-          <div className="flex w-full items-center gap-2 rounded-3xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-700 shadow-sm shadow-slate-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200 sm:max-w-md">
-            <Search
-              size={16}
-              className="flex-shrink-0 text-slate-400"
-            />
+          {/* Search Bar */}
+          {showSearch && (
+            <div className="relative z-[60] flex w-full items-center gap-2 rounded-3xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-700 shadow-sm shadow-slate-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200 sm:max-w-xs lg:max-w-sm">
+              <Search
+                size={16}
+                className="flex-shrink-0 text-slate-400"
+              />
 
-            <input
-              type="search"
-              value={searchQuery}
-              onChange={(e) => onSearch?.(e.target.value)}
-              placeholder="Search users, orders, activity"
-              className="w-full bg-transparent text-sm outline-none placeholder:text-slate-400 dark:placeholder:text-slate-500"
-            />
-          </div>
+              <input
+                type="search"
+                value={searchQuery}
+                onChange={(e) => onSearch?.(e.target.value)}
+                placeholder="Search users..."
+                className="w-full bg-transparent text-sm outline-none placeholder:text-slate-400 dark:placeholder:text-slate-500"
+              />
+            </div>
+          )}
 
           {/* Desktop Actions */}
           <div className="hidden items-center gap-2 sm:flex">
@@ -182,9 +184,27 @@ function Header({
                   className="text-slate-500"
                 />
               </button>
-            </div>
 
+              {menuOpen && (
+                <div className="absolute right-0 z-20 mt-3 w-52 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl shadow-slate-950/10 dark:border-slate-800 dark:bg-slate-900">
+
+                  <button
+                    type="button"
+                    onClick={handleLogout}
+                    className="flex w-full items-center gap-3 px-4 py-3 text-sm text-slate-700 transition hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800"
+                  >
+                    <LogOut
+                      size={14}
+                      className="flex-shrink-0"
+                    />
+                    Sign out
+                  </button>
+
+                </div>
+              )}
+            </div>
           </div>
+
         </div>
       </div>
     </div>

@@ -46,7 +46,7 @@ function DashboardHome({ theme, toggleTheme, sidebarCollapsed, onToggleSidebar, 
       <Sidebar collapsed={sidebarCollapsed} onToggleCollapse={onToggleSidebar} onLogout={onLogout} />
       <main className="flex-1 pt-4 sm:pt-6 lg:pt-8 px-4 sm:px-6 lg:px-8">
         <div className="pb-8">
-          <Header theme={theme} onToggleTheme={toggleTheme} onLogout={onLogout} userName={userName} />
+          <Header ntheme={theme}onToggleTheme={toggleTheme}onLogout={onLogout}userName={userName}showSearch={false}/>
 
           <div className="grid gap-4 sm:gap-6 lg:grid-cols-[1.7fr_1.3fr] xl:grid-cols-[1.6fr_1.4fr]">
             <div className="card overflow-hidden">
