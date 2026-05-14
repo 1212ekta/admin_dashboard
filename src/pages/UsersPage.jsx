@@ -145,7 +145,12 @@ function UsersPage({ sidebarCollapsed, onToggleSidebar, onLogout, theme, toggleT
                           <td className="px-3 py-3 sm:px-6 sm:py-5">
                             <button
                               type="button"
-                              onClick={() => setSelectedUser(user)}
+                              onClick={() => {document.activeElement.blur();
+                                setSelectedUser(user);
+                                }}
+                                                
+  
+
                               className="rounded-2xl bg-sky-600 px-2 py-1 text-xs font-medium text-white transition hover:bg-sky-700 sm:px-4 sm:py-2 sm:text-sm"
                             >
                               Details
