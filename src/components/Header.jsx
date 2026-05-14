@@ -1,7 +1,6 @@
 ﻿import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
-  Bell,
   Search,
   Moon,
   SunMedium,
@@ -47,7 +46,8 @@ function Header({
       <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
 
         {/* Left Section */}
-        <div className="flex items-center justify-between">
+        
+          <div className="flex items-center justify-between gap-4 pl-12 sm:pl-0">
           <h1 className="text-lg font-medium text-slate-800 dark:text-white sm:text-xl">
             Welcome back
           </h1>
@@ -89,14 +89,7 @@ function Header({
               )}
             </button>
 
-            {/* Notification */}
-            <button
-              type="button"
-              className="inline-flex h-11 w-11 items-center justify-center rounded-3xl border border-slate-200 bg-slate-50 text-slate-700 transition hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200 dark:hover:bg-slate-900"
-              aria-label="Notifications"
-            >
-              <Bell size={16} />
-            </button>
+
 
             {/* Profile Dropdown */}
             <div className="relative" ref={menuRef}>
