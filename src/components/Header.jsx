@@ -43,37 +43,21 @@ function Header({
 
   return (
     <div className="mb-6 rounded-3xl bg-white px-4 py-4 shadow-sm shadow-slate-200 dark:bg-slate-900 dark:shadow-slate-950/40 sm:px-5 sm:py-5">
+
       <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
 
         {/* Left Section */}
-        
-          <div className="flex items-center justify-between gap-4 pl-12 sm:pl-0">
-          <h1 className="text-lg font-medium text-slate-800 dark:text-white sm:text-xl">
+        <div className="flex items-center gap-4 pl-12 sm:pl-0">
+          <h1 className="text-base font-medium text-slate-800 dark:text-white sm:text-lg">
             Welcome back
           </h1>
         </div>
 
         {/* Right Section */}
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-end lg:flex-1">
+        <div className="flex flex-col gap-3 lg:flex-1 lg:flex-row lg:items-center lg:justify-end">
 
-          {/* Search */}
-          <div className="flex w-full items-center gap-2 rounded-3xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-700 shadow-sm shadow-slate-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200 sm:max-w-md">
-            <Search
-              size={16}
-              className="flex-shrink-0 text-slate-400"
-            />
-
-            <input
-              type="search"
-              value={searchQuery}
-              onChange={(e) => onSearch?.(e.target.value)}
-              placeholder="Search users, orders, activity"
-              className="w-full bg-transparent text-sm outline-none placeholder:text-slate-400 dark:placeholder:text-slate-500"
-            />
-          </div>
-
-          {/* Actions */}
-          <div className="flex items-center justify-end gap-2">
+          {/* Mobile Actions */}
+          <div className="flex items-center justify-between gap-3 sm:hidden">
 
             {/* Theme Toggle */}
             <button
@@ -89,10 +73,8 @@ function Header({
               )}
             </button>
 
-
-
-            {/* Profile Dropdown */}
-            <div className="relative" ref={menuRef}>
+            {/* Profile */}
+            <div className="relative ml-auto" ref={menuRef}>
               <button
                 type="button"
                 onClick={() => setMenuOpen((open) => !open)}
@@ -102,7 +84,7 @@ function Header({
                   {userName.charAt(0)}
                 </span>
 
-                <span className="max-w-[120px] truncate text-sm font-medium">
+                <span className="text-sm font-medium">
                   {userName}
                 </span>
 
@@ -144,6 +126,62 @@ function Header({
 
                 </div>
               )}
+            </div>
+          </div>
+
+          {/* Search */}
+          <div className="flex w-full items-center gap-2 rounded-3xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-700 shadow-sm shadow-slate-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200 sm:max-w-md">
+            <Search
+              size={16}
+              className="flex-shrink-0 text-slate-400"
+            />
+
+            <input
+              type="search"
+              value={searchQuery}
+              onChange={(e) => onSearch?.(e.target.value)}
+              placeholder="Search users, orders, activity"
+              className="w-full bg-transparent text-sm outline-none placeholder:text-slate-400 dark:placeholder:text-slate-500"
+            />
+          </div>
+
+          {/* Desktop Actions */}
+          <div className="hidden items-center gap-2 sm:flex">
+
+            {/* Theme Toggle */}
+            <button
+              type="button"
+              onClick={onToggleTheme}
+              className="inline-flex h-11 w-11 items-center justify-center rounded-3xl border border-slate-200 bg-slate-50 text-slate-700 transition hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200 dark:hover:bg-slate-900"
+              aria-label="Toggle theme"
+            >
+              {theme === 'dark' ? (
+                <SunMedium size={16} />
+              ) : (
+                <Moon size={16} />
+              )}
+            </button>
+
+            {/* Profile */}
+            <div className="relative" ref={menuRef}>
+              <button
+                type="button"
+                onClick={() => setMenuOpen((open) => !open)}
+                className="inline-flex h-11 items-center gap-3 rounded-3xl border border-slate-200 bg-slate-50 px-3 text-slate-800 transition hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:hover:bg-slate-900"
+              >
+                <span className="inline-flex h-9 w-9 items-center justify-center rounded-3xl bg-slate-900 text-sm font-semibold text-white dark:bg-slate-100 dark:text-slate-900">
+                  {userName.charAt(0)}
+                </span>
+
+                <span className="hidden text-sm font-medium sm:inline">
+                  {userName}
+                </span>
+
+                <ChevronDown
+                  size={14}
+                  className="text-slate-500"
+                />
+              </button>
             </div>
 
           </div>
